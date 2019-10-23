@@ -4,47 +4,115 @@ using System.Collections.Generic;
 
 class HexConverter{
 
-   public static int ConvertDecimalToHexal(int dec){
+    public static void Main(){
+         HexConverter.ConvertDecimalToHexal(15);
+        
+        // HexConverter.ConvertHexalToDecimal(23);
+
+        // HexConverter.ConvertToBaseFromDecimal(16,150);
+
+        // HexConverter.ConvertToDecimalFromBase(16,96);
+
+        // HexConverter.ConvertNumberToBaseFromBase(15, 6, 16);
+    }
+        
+
+   static int ConvertDecimalToHexal(int dec){
         
         int MaxDecimal = 1023;
-        int Base = 16;
+        int Base = 6;
 
-        int division = 0;
-        int modulo = 0;
-        List<int> hex = new List<int>();
+        int power = 0;
+        int result = 0;
        
-        if(dec >= 0 && dec < MaxDecimal){
-            for(int i = 0; i <= dec; i ++){
-                division = dec/Base;
-                modulo = dec%Base;
-                hex.Add(modulo);
-                dec = division;
-            }
-            
-        }
-        else{
+        if(dec < 0 || dec > MaxDecimal){
             WriteLine("The input is above the max  decimal number " + MaxDecimal + "!");
             return 0;
         }
         
-        hex.Reverse();
-        int result = int.Parse(string.Join(",",hex).Replace(",", ""));
-        WriteLine(result);
+        for(int i = 0; i <= dec; i ++){
+            int division = dec/Base;
+            int modulo = dec%Base;
+            result += (int)Math.Pow(10, power) * modulo;
+            power++;
+            dec = division;
+        }
+                    
+        
+        WriteLine("The hexal number is " + result);
         return result; 
     }
 
-    public static int ConvertHexalToDecimal(int hexal){
-        int Base = 16;
-
-        string HexalAsString = hexal.ToString();
-        Char[] Numbers = HexalAsString.ToCharArray();
+    static int ConvertHexalToDecimal(int hexal){
+        int Base = 6;
+        int result = 0;
+     
+        Char[] hexNumbers = hexal.ToString().ToCharArray();
         
-        for(int i = 0; i <= hexal; i++){
-            double multiply = Math.Pow(Base, i);
+        for(int i = 0; i < hexNumbers.Length; i++){
+
+            int hexChar = (int)Char.GetNumericValue(hexal.ToString(), hexNumbers.Length - i - 1);
+            int multiply = (int)Math.Pow(Base, i);
+            
+            result +=  hexChar * multiply;
         }
         
-        
-        return 0;
+        WriteLine("The decimal number is " + result);
+        return result;
     }
+
+    static int ConvertToBaseFromDecimal(int toBase, int dec){
+
+        int MaxDecimal = 1023;
+        int Base = toBase;
+
+        int power = 0;
+        int result = 0;
+       
+        if(dec < 0 || dec > MaxDecimal){
+            WriteLine("The input is above the max  decimal number " + MaxDecimal + "!");
+            return 0;
+        }
+        
+        for(int i = 0; i <= dec; i ++){
+            int division = dec/Base;
+            int modulo = dec%Base;
+            result += (int)Math.Pow(10, power) * modulo;
+            power++;
+            dec = division;
+        }
+                    
+        
+        WriteLine("The converted number is " + result + " with base " + Base);
+        return result; 
+    }
+
+    static int ConvertToDecimalFromBase(int fromBase, int number){
+        int Base = fromBase;
+        int result = 0;
+     
+        Char[] numberAsArray = number.ToString().ToCharArray();
+        
+        for(int i = 0; i < numberAsArray.Length; i++){
+
+            int hexChar = (int)Char.GetNumericValue(number.ToString(), numberAsArray.Length - i - 1);
+            int multiply = (int)Math.Pow(Base, i);
+            
+            result +=  hexChar * multiply;
+        }
+        
+        WriteLine("The converted number is " + result + " with base " + Base);
+        return result;
+    }
+    
+    static int ConvertNumberToBaseFromBase(int number, int toBase, int fromBase){
+        
+        int dec = ConvertToDecimalFromBase(fromBase, number);
+        int result = ConvertToBaseFromDecimal(toBase, dec);
+
+        WriteLine("The converted number is " + result);
+        return result;
+    }
+
 
 }
