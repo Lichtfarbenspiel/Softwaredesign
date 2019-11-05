@@ -1,6 +1,6 @@
 using System;
 
-class Container{
+class Container<T>{
 
     private object[] ObjectsList; 
     private int counts;
