@@ -7,12 +7,12 @@ class Oxo{
     int player = 1;
     int playerInput = 0;
 
-    public static void Main(){
-        int[] boardArray = new int[9];
+    // public static void Main(){
+    //     int[] boardArray = new int[9];
 
                 
 
-    }
+    // }
 
     public void TakeTurn(){
 

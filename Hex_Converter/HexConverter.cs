@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 class HexConverter{
 
-    public static void Main(){
-         HexConverter.ConvertDecimalToHexal(15);
+    // public static void Main(){
+    //      HexConverter.ConvertDecimalToHexal(15);
         
-        // HexConverter.ConvertHexalToDecimal(23);
+    //     // HexConverter.ConvertHexalToDecimal(23);
 
-        // HexConverter.ConvertToBaseFromDecimal(16,150);
+    //     // HexConverter.ConvertToBaseFromDecimal(16,150);
 
-        // HexConverter.ConvertToDecimalFromBase(16,96);
+    //     // HexConverter.ConvertToDecimalFromBase(16,96);
 
-        // HexConverter.ConvertNumberToBaseFromBase(15, 6, 16);
-    }
+    //     // HexConverter.ConvertNumberToBaseFromBase(15, 6, 16);
+    // }
         
 
    static int ConvertDecimalToHexal(int dec){
