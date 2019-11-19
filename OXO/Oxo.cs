@@ -14,7 +14,7 @@ class Oxo{
 
     // }
 
-    public void TakeTurn(){
+    public void TakeTurn(){ 
 
         WriteLine("Please give a position in numbers from 1 to 9 to set on the board");
         Write(">");
