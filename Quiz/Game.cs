@@ -53,6 +53,7 @@ namespace Softwaredesign.Quiz
 
         void PlayQuiz()
         {
+            DefaultQuiz();
             var rnd = new Random();
             var rndList = quizzes.OrderBy(item => rnd.Next());
 
@@ -77,7 +78,7 @@ namespace Softwaredesign.Quiz
         void AddUserQuiz(){
             AddQuiz quiz = new AddQuiz();
             WriteLine("Please select a quiz type to add:");
-            WriteLine("1: Quess Quiz");
+            WriteLine("1: Guess Quiz");
             WriteLine("2: Text Quiz");
             WriteLine("3: True or False Quiz");
             WriteLine("4: Single Choice Quiz");
@@ -90,23 +91,22 @@ namespace Softwaredesign.Quiz
             switch(selection){
                 case 1:
                     quiz.AddQuizGuess();
-                    Menu();
                     break;
                 case 2:
                     quiz.AddQuizText();
-                    Menu();
+                    
                     break;
                 case 3:
                     quiz.AddQuizTrueFalse();
-                    Menu();
+                    
                     break;
                 case 4:
                     quiz.AddQuizSingleChoice();
-                    Menu();
+                    
                     break;
                 case 5:
                     quiz.AddQuizMultipleChoice();
-                    Menu();
+                    
                 break;
                 case 6:
                     Menu();
@@ -116,7 +116,7 @@ namespace Softwaredesign.Quiz
 
         }
 
-        void DefaultQuizzes(){
+        void DefaultQuiz(){
             QuizText quizText = new QuizText("What answeres in all languages? Talks without a mouth? Listens without ears?", new Answer("Echo", true));
             quizzes.Add(quizText);
             QuizGuess quizGuess = new QuizGuess("How many Letters has the Hawaiian alphabet?", 0.3f, 12f);
