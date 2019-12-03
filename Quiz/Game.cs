@@ -14,11 +14,11 @@ namespace Softwaredesign.Quiz
         string MsgWrongAnswer = "Sorry the selected answer is wrong.";
         string MsgCorrectAnswer = "Congratulations! The selected answer ist correct.";
 
-        public static void Main()
-        {
-            Game game = new Game();
-            game.Menu();
-        }
+        // public static void Main()
+        // {
+        //     Game game = new Game();
+        //     game.Menu();
+        // }
 
         void Menu(){
 
