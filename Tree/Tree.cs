@@ -5,12 +5,11 @@ using static System.Console;
 class TreeNode<T>{
 
     public T Type;
-    // public TreeNode<T> parent;
+    public TreeNode<T> parent;
     public List<TreeNode<T>> children;
 
     public TreeNode()
     {
-        // this.parent = new TreeNode<T>();
         this.children = new List<TreeNode<T>>();
 
     }
@@ -18,7 +17,7 @@ class TreeNode<T>{
     public TreeNode(T type)
     {
         this.Type = type;
-        // this.parent = new TreeNode<T>();
+        this.parent = null;
         this.children = new List<TreeNode<T>>();
     }
 
@@ -27,7 +26,9 @@ class TreeNode<T>{
     }
 
     public void AppendChild(TreeNode<T> child){
-        children.Add(child);
+
+        this.children.Add(child);
+        child.parent = this;
     }
 
     public void RemoveChild(TreeNode<T> child){
@@ -35,16 +36,24 @@ class TreeNode<T>{
     }
 
     public void PrintTree(){
-        WriteLine(this.Type.ToString());
+        WriteLine(this.Type);
         PrintChildren("", this);
     }
 
     private void PrintChildren(string generation, TreeNode<T> parent){
-        generation = "*";
+        generation += "*";
+
         foreach(TreeNode<T> child in parent.children){
-            
             WriteLine(generation + child.Type.ToString());
+
+            PrintChildren(generation, child);
         }
-        PrintChildren(generation, parent);
+        
+    }
+
+    public void ForEach(Func<string> function){
+        foreach(TreeNode<T> child in this.children){
+            function();
+            child.ForEach(function);
     }
 }
