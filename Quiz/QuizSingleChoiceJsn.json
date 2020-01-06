@@ -1,0 +1,34 @@
+[
+    {
+        "question": "Who is a Professor at Hogwarts?",
+        "answers":[
+            {
+                "text": "Prof. Dumbledore",
+                "isTrue": true
+            },
+            {
+                "text": "Prof. McDonalds",
+                "isTrue": false
+            },
+            {
+                "text": "Prof. MacGonagall",
+                "isTrue": true
+            },
+            {
+                "text": "Prof. Hagrid",
+                "isTrue": false
+            },
+            {
+                "text": "Prof. Umbridge",
+                "isTrue": true
+            }
+            ,
+            {
+                "text": "Prof. Sniper",
+                "isTrue": false
+            }
+
+        ]
+       
+    }
+]

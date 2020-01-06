@@ -1,0 +1,16 @@
+[
+    {
+        "question": "What answeres in all languages? Talks without a mouth? Listens without ears?",
+        "answer":{
+            "text": "Echo",
+            "isTrue": true
+        }
+    },
+    {
+        "question": "What color is the French wine Beaujolais?",
+        "answer":{
+            "text": "Red",
+            "isTrue": true
+        }
+    }
+]

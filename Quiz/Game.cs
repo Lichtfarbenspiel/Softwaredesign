@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 using System.Diagnostics;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Softwaredesign.Quiz
 {
+
     class Game
     {
         public List<QuizElement> quizzes = new List<QuizElement>();
@@ -14,11 +17,13 @@ namespace Softwaredesign.Quiz
         string MsgWrongAnswer = "Sorry the selected answer is wrong.";
         string MsgCorrectAnswer = "Congratulations! The selected answer ist correct.";
 
-        // public static void Main()
-        // {
-        //     Game game = new Game();
-        //     game.Menu();
-        // }
+        public static void Main()
+        {
+            Game game = new Game();
+            game.DefaultQuiz();
+            game.Menu();
+           
+        }
 
         void Menu(){
 
@@ -33,6 +38,7 @@ namespace Softwaredesign.Quiz
             WriteLine("• Enter '1' to play the quiz");
             WriteLine("• Enter '2' to add a new quiz element");
             WriteLine("• Enter '0' to quit the application");
+            WriteLine("\n");
             Write(">");
             input = ReadLine();
             // WriteLine(input);
@@ -40,7 +46,6 @@ namespace Softwaredesign.Quiz
 
             switch(selection){
                 case 0:
-                    Debugger.Break();
                     break;
                 case 1: 
                     PlayQuiz();
@@ -53,7 +58,7 @@ namespace Softwaredesign.Quiz
 
         void PlayQuiz()
         {
-            DefaultQuiz();
+            Console.Clear();
             Random rnd = new Random();
             // var rndList = quizzes.OrderBy(item => rnd.Next());
 
@@ -67,7 +72,9 @@ namespace Softwaredesign.Quiz
 
             bool check = currentQuiz.CheckAnswer(userInput);
             if(check == true){
+                WriteLine("\n");
                 WriteLine(MsgCorrectAnswer);
+                WriteLine("\n");
                 score += 2;
             }
             else{
@@ -78,8 +85,77 @@ namespace Softwaredesign.Quiz
             Menu();
         }
 
+        void DefaultQuiz(){
+            readQuizTextJsn();
+            readQuizGuessJsn();
+            readQuizTrueFalseJsn();
+            readQuizSingleChoiceJsn();
+        }
+
+        string pathText = "Quiz/QuizTextJsn.json";
+
+        void readQuizTextJsn(){
+            List<QuizText> quizList = new List<QuizText>();
+
+            using(StreamReader r = new StreamReader(pathText)){
+                string json = r.ReadToEnd();
+                quizList = JsonConvert.DeserializeObject<List<QuizText>>(json);
+            }
+
+            foreach(QuizText element in quizList){
+                quizzes.Add(element);
+            }
+        }
+
+        void readQuizGuessJsn(){
+            string path = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizGuessJsn.json";
+            List<QuizGuess> quizList = new List<QuizGuess>();
+
+            using(StreamReader r = new StreamReader(path)){
+                string json = r.ReadToEnd();
+                quizList = JsonConvert.DeserializeObject<List<QuizGuess>>(json);
+            }
+
+            foreach(QuizGuess element in quizList){
+                quizzes.Add(element);
+            }
+        }
+
+        void readQuizTrueFalseJsn(){
+            string path = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizTrueFalseJsn.json";
+            List<QuizTrueFalse> quizList = new List<QuizTrueFalse>();
+
+            using(StreamReader r = new StreamReader(path)){
+                string json = r.ReadToEnd();
+                quizList = JsonConvert.DeserializeObject<List<QuizTrueFalse>>(json);
+            }
+
+            foreach(QuizTrueFalse element in quizList){
+                quizzes.Add(element);
+            }
+        }
+
+        void readQuizSingleChoiceJsn(){
+            string path = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizSingleChoiceJsn.json";
+            List<QuizSingleChoice> quizList = new List<QuizSingleChoice>();
+
+            using(StreamReader r = new StreamReader(path)){
+                string json = r.ReadToEnd();
+                quizList = JsonConvert.DeserializeObject<List<QuizSingleChoice>>(json);
+            }
+
+            
+
+            foreach(QuizSingleChoice element in quizList){
+                quizzes.Add(element);
+            }
+        }
+
         void AddUserQuiz(){
+            int selection = 0;
+            string input;
         
+            WriteLine("ADD QUIZ_________________________________");
             WriteLine("Please select a quiz type to add:");
             WriteLine("1: Guess Quiz");
             WriteLine("2: Text Quiz");
@@ -87,25 +163,20 @@ namespace Softwaredesign.Quiz
             WriteLine("4: Single Choice Quiz");
             WriteLine("5: Multiple Choice Quiz");
             WriteLine("6: Return to Menu");
+            WriteLine("\n");
+            WriteLine("Enter '0' to quit the application");
+            WriteLine("\n");
             Write(">");
 
-            int selection = Read();
+            input = ReadLine();
+            selection = Int32.Parse(input);
 
-            // if(selection == 1)
-            //     AddQuizGuess();
-            // else if(selection == 2)
-            //     AddQuizText();
-            // else if(selection == 3)
-            //     AddQuizText();
-            // else if(selection == 4)
-            //     AddQuizSingleChoice();
-            // else if(selection == 5)
-            //     AddQuizMultipleChoice();
-            // else if(selection == 6)
-            //     Menu();
 
             switch(selection){
+                case 0:
+                    break;
                 case 1:
+                    WriteLine("Loading...");
                     AddQuizGuess();
                     break;
                 case 2:
@@ -127,36 +198,58 @@ namespace Softwaredesign.Quiz
 
         }
 
-        void DefaultQuiz(){
-            // quizzes.Add(
-            //     new QuizText("What answeres in all languages? Talks without a mouth? Listens without ears?", new Answer("Echo", true))
-            // );
-            // quizzes.Add(
-            //     new QuizGuess("How many Letters has the Hawaiian alphabet?", 0.3f, 12f)
-            // );
-            // quizzes.Add(
-            //     new QuizTrueFalse("The Vatican State is not a democracy but the only dictatorship in Europe.", true)
-            // );
-            quizzes.Add(new QuizMultipleChoice("Who is a Professor at Hogwarts?", new Answer[6]{
-                new Answer("Prof. Dumbledore", true), new Answer("Prof. McDonalds", false), new Answer("Prof. MacGonagall", true), new Answer("Prof. Hagrid", false), new Answer("Prof. Umbridge", true), new Answer("Prof. Sniper", false)
-            }));
-            
+        public string AddObjectsToJson<QuizElement>(string jsonPath, QuizElement element)
+        {
+
+            List<QuizElement> quizList = new List<QuizElement>();
+            using(StreamReader r = new StreamReader(jsonPath)){
+                string json = r.ReadToEnd();
+                quizList = JsonConvert.DeserializeObject<List<QuizElement>>(json);
+            }
+            quizList.Add(element);
+            WriteLine(quizList);
+            return JsonConvert.SerializeObject(quizList);
+        
         }
 
-
         string instructionsQuestion = "Please enter the question.";
+
+        void AddQuizGuess()
+        {
+            WriteLine(instructionsQuestion);
+            WriteLine(">");
+            string question = ReadLine();
+
+            WriteLine("Please enter the correct answer as a number. It may be a float number seperated by a dot.");
+            Write(">");
+            float answer = float.Parse(ReadLine());
+
+            WriteLine("Please enter the 'percentage' of the valid tolarance from 0 to 1. E.g. 0.2 for a tolerance of 20%.");
+            Write(">");
+            float tolerance = float.Parse(ReadLine());
+
+            new QuizGuess(question, tolerance, answer);
+            Menu();
+        }
+
         void AddQuizText()
         {
             WriteLine(instructionsQuestion);
             Write(">");
             string question = ReadLine();
+            WriteLine("\n");
             WriteLine("Please enter the answer.");
             Write(">");
+            
             string userAnswer = ReadLine();
 
             Answer answer = new Answer(userAnswer, true);
-            quizzes.Add(new QuizText(question, answer));
-            
+            QuizText element = new QuizText(question, answer);
+
+            string updatedJson = AddObjectsToJson(pathText, element);
+            File.WriteAllText(pathText, updatedJson);
+            WriteLine("New quiz element successfully added!");
+            WriteLine("\n");
             Menu();
         }
 
@@ -176,24 +269,6 @@ namespace Softwaredesign.Quiz
                 isTrue = false;
 
             quizzes.Add(new QuizTrueFalse(question, isTrue));
-            Menu();
-        }
-
-        void AddQuizGuess()
-        {
-            WriteLine(instructionsQuestion);
-            WriteLine(">");
-            string question = ReadLine();
-
-            WriteLine("Please enter the correct answer as a number. It may be a float number seperated by a dot.");
-            Write(">");
-            float answer = float.Parse(ReadLine());
-
-            WriteLine("Please enter the 'percentage' of the valid tolarance from 0 to 1. E.g. 0.2 for a tolerance of 20%.");
-            Write(">");
-            float tolerance = float.Parse(ReadLine());
-
-            new QuizGuess(question, tolerance, answer);
             Menu();
         }
 

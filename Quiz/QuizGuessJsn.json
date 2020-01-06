@@ -1,0 +1,12 @@
+[
+    {
+        "Question": "How many Letters has the Hawaiian alphabet?",
+        "Tolerance": 0.3,
+        "CorrectAnswer": 12
+    },
+    {
+        "Question": "In which year did the Battle of Waterloo take place?",
+        "Tolerance": 0.05,
+        "CorrectAnswer": 1815
+    }
+]

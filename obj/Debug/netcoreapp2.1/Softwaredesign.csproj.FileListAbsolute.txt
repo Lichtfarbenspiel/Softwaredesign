@@ -9,3 +9,13 @@ D:\Repositories\HFU\Softwaredesign\bin\Debug\netcoreapp2.1\Softwaredesign.dll
 D:\Repositories\HFU\Softwaredesign\bin\Debug\netcoreapp2.1\Softwaredesign.pdb
 D:\Repositories\HFU\Softwaredesign\obj\Debug\netcoreapp2.1\Softwaredesign.dll
 D:\Repositories\HFU\Softwaredesign\obj\Debug\netcoreapp2.1\Softwaredesign.pdb
+C:\Repositories\HFU\Softwaredesign\bin\Debug\netcoreapp2.1\Softwaredesign.deps.json
+C:\Repositories\HFU\Softwaredesign\bin\Debug\netcoreapp2.1\Softwaredesign.runtimeconfig.json
+C:\Repositories\HFU\Softwaredesign\bin\Debug\netcoreapp2.1\Softwaredesign.runtimeconfig.dev.json
+C:\Repositories\HFU\Softwaredesign\bin\Debug\netcoreapp2.1\Softwaredesign.dll
+C:\Repositories\HFU\Softwaredesign\bin\Debug\netcoreapp2.1\Softwaredesign.pdb
+C:\Repositories\HFU\Softwaredesign\obj\Debug\netcoreapp2.1\Softwaredesign.csprojAssemblyReference.cache
+C:\Repositories\HFU\Softwaredesign\obj\Debug\netcoreapp2.1\Softwaredesign.AssemblyInfoInputs.cache
+C:\Repositories\HFU\Softwaredesign\obj\Debug\netcoreapp2.1\Softwaredesign.AssemblyInfo.cs
+C:\Repositories\HFU\Softwaredesign\obj\Debug\netcoreapp2.1\Softwaredesign.dll
+C:\Repositories\HFU\Softwaredesign\obj\Debug\netcoreapp2.1\Softwaredesign.pdb
