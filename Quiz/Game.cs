@@ -5,6 +5,7 @@ using static System.Console;
 using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace Softwaredesign.Quiz
 {
@@ -30,6 +31,7 @@ namespace Softwaredesign.Quiz
             int selection = 0;
             string input;
 
+            Console.Clear();
             WriteLine("QUIZ_____________________________________");
             WriteLine("Score: " + score);
             WriteLine("Questions already answered: " + quizCount);
@@ -176,7 +178,6 @@ namespace Softwaredesign.Quiz
                 case 0:
                     break;
                 case 1:
-                    WriteLine("Loading...");
                     AddQuizGuess();
                     break;
                 case 2:
@@ -216,6 +217,9 @@ namespace Softwaredesign.Quiz
 
         void AddQuizGuess()
         {
+            Console.Clear();
+            WriteLine("ADD GUESS QUIZ___________________________");
+            WriteLine("\n");
             WriteLine(instructionsQuestion);
             WriteLine(">");
             string question = ReadLine();
@@ -234,6 +238,9 @@ namespace Softwaredesign.Quiz
 
         void AddQuizText()
         {
+            Console.Clear();
+            WriteLine("ADD TEXT QUIZ____________________________");
+            WriteLine("\n");
             WriteLine(instructionsQuestion);
             Write(">");
             string question = ReadLine();
@@ -250,12 +257,17 @@ namespace Softwaredesign.Quiz
             File.WriteAllText(pathText, updatedJson);
             WriteLine("New quiz element successfully added!");
             WriteLine("\n");
+            Thread.Sleep(5000);
+    
             Menu();
         }
 
         void AddQuizTrueFalse()
         {
             bool isTrue = false;
+            Console.Clear();
+            WriteLine("ADD TRUE/FALSE QUIZ______________________");
+            WriteLine("\n");
             WriteLine(instructionsQuestion);
             Write(">");
             string question = ReadLine();
@@ -279,6 +291,9 @@ namespace Softwaredesign.Quiz
             string wrongAnswer = "";
             int count = 0;
 
+            Console.Clear();
+            WriteLine("ADD MULTIPLE CHOICE QUIZ_________________");
+            WriteLine("\n");
             WriteLine(instructionsQuestion);
             WriteLine(">");
             string question = ReadLine();
@@ -315,6 +330,9 @@ namespace Softwaredesign.Quiz
         }
         void AddQuizSingleChoice()
         {
+            Console.Clear();
+            WriteLine("ADD SINGLE CHOICE QUIZ___________________");
+            WriteLine("\n");
             Answer[] answers = new Answer[6];
             string answer = "";
 
