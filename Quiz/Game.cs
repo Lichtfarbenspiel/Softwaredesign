@@ -89,9 +89,9 @@ namespace Softwaredesign.Quiz
 
         void DefaultQuiz(){
             readQuizTextJsn();
-            readQuizGuessJsn();
-            readQuizTrueFalseJsn();
-            readQuizSingleChoiceJsn();
+            // readQuizGuessJsn();
+            // readQuizTrueFalseJsn();
+            // readQuizSingleChoiceJsn();
         }
 
         string pathText = "Quiz/QuizTextJsn.json";
@@ -145,8 +145,6 @@ namespace Softwaredesign.Quiz
                 string json = r.ReadToEnd();
                 quizList = JsonConvert.DeserializeObject<List<QuizSingleChoice>>(json);
             }
-
-            
 
             foreach(QuizSingleChoice element in quizList){
                 quizzes.Add(element);

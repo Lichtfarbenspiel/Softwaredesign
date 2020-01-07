@@ -21,7 +21,7 @@ namespace Softwaredesign.Quiz
             WriteLine(question);
             
             for(int i = 0; i < answers.Length; i++){
-                WriteLine(count + ": " + answers[i]);
+                WriteLine(count + ": " + answers[i].text);
                 count ++;
             }
         }
