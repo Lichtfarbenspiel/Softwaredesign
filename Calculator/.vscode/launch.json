@@ -9,11 +9,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/Softwaredesign.dll",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/Calculator.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
-            // "console": "externalTerminal",
-            "console": "internalConsole",
+            "console": "externalTerminal",
             "stopAtEntry": false
         },
         {

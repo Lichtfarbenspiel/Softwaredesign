@@ -18,13 +18,13 @@ namespace Softwaredesign.Quiz
         string MsgWrongAnswer = "Sorry the selected answer is wrong.";
         string MsgCorrectAnswer = "Congratulations! The selected answer ist correct.";
 
-        public static void Main()
-        {
-            Game game = new Game();
-            game.DefaultQuiz();
-            game.Menu();
+        // public static void Main()
+        // {
+        //     Game game = new Game();
+        //     game.DefaultQuiz();
+        //     game.Menu();
            
-        }
+        // }
 
         void Menu(){
 
@@ -87,18 +87,44 @@ namespace Softwaredesign.Quiz
             Menu();
         }
 
+        string pathText = "Quiz/QuizTextJsn.json";
+        string pathGuess = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizGuessJsn.json";
+        string pathTrueFalse = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizTrueFalseJsn.json";
+        string pathSingleChoice = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizSingleChoiceJsn.json";
+        // string pathMultipleChoice = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizMultipleChoiceJsn.json";
+
+
         void DefaultQuiz(){
+            // readJson(pathText);
+            // readJson(pathGuess);
+            // readJson(pathTrueFalse);
+            // readJson(pathSingleChoice);
             readQuizTextJsn();
-            // readQuizGuessJsn();
-            // readQuizTrueFalseJsn();
-            // readQuizSingleChoiceJsn();
+            readQuizGuessJsn();
+            readQuizTrueFalseJsn();
+            readQuizSingleChoiceJsn();
         }
 
-        string pathText = "Quiz/QuizTextJsn.json";
+    
+        // public void readJson(string path)
+        // {
+
+        //     List<QuizElement> quizList = new List<QuizElement>();
+        //     using(StreamReader r = new StreamReader(path)){
+        //         string json = r.ReadToEnd();
+        //         quizList = JsonConvert.DeserializeObject<List<QuizElement>>(json);
+        //     }
+
+
+        //     foreach(QuizElement element in quizList){
+        //         quizzes.Add(element);
+        //     }
+
+        // }
 
         void readQuizTextJsn(){
-            List<QuizText> quizList = new List<QuizText>();
 
+            List<QuizText> quizList = new List<QuizText>();
             using(StreamReader r = new StreamReader(pathText)){
                 string json = r.ReadToEnd();
                 quizList = JsonConvert.DeserializeObject<List<QuizText>>(json);
@@ -110,10 +136,9 @@ namespace Softwaredesign.Quiz
         }
 
         void readQuizGuessJsn(){
-            string path = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizGuessJsn.json";
             List<QuizGuess> quizList = new List<QuizGuess>();
 
-            using(StreamReader r = new StreamReader(path)){
+            using(StreamReader r = new StreamReader(pathGuess)){
                 string json = r.ReadToEnd();
                 quizList = JsonConvert.DeserializeObject<List<QuizGuess>>(json);
             }
@@ -124,10 +149,9 @@ namespace Softwaredesign.Quiz
         }
 
         void readQuizTrueFalseJsn(){
-            string path = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizTrueFalseJsn.json";
             List<QuizTrueFalse> quizList = new List<QuizTrueFalse>();
 
-            using(StreamReader r = new StreamReader(path)){
+            using(StreamReader r = new StreamReader(pathTrueFalse)){
                 string json = r.ReadToEnd();
                 quizList = JsonConvert.DeserializeObject<List<QuizTrueFalse>>(json);
             }
@@ -138,14 +162,14 @@ namespace Softwaredesign.Quiz
         }
 
         void readQuizSingleChoiceJsn(){
-            string path = "C:/Repositories/HFU/Softwaredesign/Quiz/QuizSingleChoiceJsn.json";
             List<QuizSingleChoice> quizList = new List<QuizSingleChoice>();
 
-            using(StreamReader r = new StreamReader(path)){
+            using(StreamReader r = new StreamReader(pathSingleChoice)){
                 string json = r.ReadToEnd();
                 quizList = JsonConvert.DeserializeObject<List<QuizSingleChoice>>(json);
             }
 
+            
             foreach(QuizSingleChoice element in quizList){
                 quizzes.Add(element);
             }
@@ -253,6 +277,7 @@ namespace Softwaredesign.Quiz
 
             string updatedJson = AddObjectsToJson(pathText, element);
             File.WriteAllText(pathText, updatedJson);
+            WriteLine(updatedJson.ToString());
             WriteLine("New quiz element successfully added!");
             WriteLine("\n");
             Thread.Sleep(5000);

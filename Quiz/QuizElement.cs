@@ -21,7 +21,6 @@ namespace Softwaredesign.Quiz
         {
             WriteLine(instructions);
             WriteLine(question);
-            WriteLine("Answers");
         }
 
         public virtual bool CheckAnswer(string userInput)
