@@ -1,8 +1,0 @@
-C:\Repositories\HFU\Softwaredesign\Operations\bin\Debug\netstandard2.0\Operations.deps.json
-C:\Repositories\HFU\Softwaredesign\Operations\bin\Debug\netstandard2.0\Operations.dll
-C:\Repositories\HFU\Softwaredesign\Operations\bin\Debug\netstandard2.0\Operations.pdb
-C:\Repositories\HFU\Softwaredesign\Operations\obj\Debug\netstandard2.0\Operations.csprojAssemblyReference.cache
-C:\Repositories\HFU\Softwaredesign\Operations\obj\Debug\netstandard2.0\Operations.AssemblyInfoInputs.cache
-C:\Repositories\HFU\Softwaredesign\Operations\obj\Debug\netstandard2.0\Operations.AssemblyInfo.cs
-C:\Repositories\HFU\Softwaredesign\Operations\obj\Debug\netstandard2.0\Operations.dll
-C:\Repositories\HFU\Softwaredesign\Operations\obj\Debug\netstandard2.0\Operations.pdb
